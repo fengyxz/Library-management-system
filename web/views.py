@@ -177,8 +177,14 @@ def book_add_multi(request):
         return render(request, 'book_add_multi.html')
     # POST操作时，得到上传的文件newbooks
     file_object = request.FILES.get("newbooks")
+    #print(file_object)
     if(not file_object):
         return render(request, 'book_add_multi.html', {"name": name, "error_msg": "不得上传为空"})
+    name=file_object.name
+    type=name[name.rfind('.'):]
+    print(type)
+    if(type != '.txt'):
+        return render(request, 'book_add_multi.html', {"name": name, "error_msg": "仅支持txt文件，请重新上传"})
     file = file_object.read()
     # 将其转化为字符串形式
     str = file.decode('utf-8')
