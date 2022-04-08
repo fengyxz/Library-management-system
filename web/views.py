@@ -180,6 +180,7 @@ def book_add_multi(request):
     #print(file_object)
     if(not file_object):
         return render(request, 'book_add_multi.html', {"name": name, "error_msg": "不得上传为空"})
+    # 判断上传的文件类型
     name=file_object.name
     type=name[name.rfind('.'):]
     print(type)
