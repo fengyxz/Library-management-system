@@ -1,0 +1,13 @@
+# library
+library/__pycache__/
+library/settings.py
+
+# web
+web/__pycache__/
+web/migrations/*
+
+# vscode
+.vscode/
+
+# sql
+*.sql

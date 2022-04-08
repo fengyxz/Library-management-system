@@ -6,6 +6,7 @@
 
 {% block content %} 
 <h1><strong><center>图书单本入库</center></strong></h1>
+<div style="margin-bottom:30px"> </div>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -19,8 +20,8 @@
                     <label>{{ field.label }}</label>
                     {{ field }}
                     <span style="color:red;">{{ field.errors.0 }}</span>
-                    {% endfor %}
                 </div>
+                {% endfor %}
                 <center><button type="submit" class="btn btn-primary">入库</button></center>
             </form>
         </div>
