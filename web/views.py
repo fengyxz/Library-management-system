@@ -282,7 +282,7 @@ def book_list(request):
     # 筛选出前50条数据
     res = res.all()[:50]
 
-    return render(request, 'book_list.html', {"name": name, "queryset": res, "search_t": search_t, "search_a": search_a, "search_p": search_p, "search_pl": search_pl, "search_pr": search_pr, "search_yl": search_yl, "search_yr": search_yr, "order": order})
+    return render(request, 'book_list.html', {"name": name, "queryset": res,"search_b":search_b, "search_t": search_t, "search_a": search_a, "search_p": search_p, "search_pl": search_pl, "search_pr": search_pr, "search_yl": search_yl, "search_yr": search_yr, "order": order})
 
 
 # 借阅图书--管理员操作（管理员信息存于cookies）
