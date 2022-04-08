@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <center><h1>Hello,</h1></center>
+            <center><h2>欢迎进入图书管理网站</h2></center>
+            <center><p>选择登入身份</p></center>
+            <!-- <center><div class="btn-group btn-group-lg" role="group" aria-label="...">
+                <a class="btn btn-primary btn-lg" href="#" role="button">普通游客</a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">管理员</a>
+            </div></center> -->
+            <center><div>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/login/" role="button">管理员</a>
+            </div></center>
+            <center><span style="color:red;">{{error_msg}}</span></center>
+        </div>
+    </div>
+
+{% endblock %}

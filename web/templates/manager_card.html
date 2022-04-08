@@ -1,0 +1,76 @@
+{% extends 'layout1.html' %}
+
+{% block title %}
+<title>借书证管理</title>
+{% endblock %}
+
+{% block content %}
+<h1><strong>
+        <center>借书证管理</center>
+    </strong></h1>
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %}
+        <div style="margin-bottom:20px"> </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">借书证号</button>
+                    </span>
+                    <input type="text" class="form-control form-control" name="nid" value="{{ nid }}"
+                        placeholder="{{ nid }}">
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-1">
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"
+                    aria-hidden="true"></span> 搜 索</button></div>
+            <div class="col-lg-2">
+                <!--添加按钮 -->
+                <a class="btn btn-success" href="/manager/card/add/">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    新建借书证
+                </a>
+            </div>
+        </div><!-- /.row -->
+        <div style="margin-bottom:20px"> </div>
+        <div>
+        <center><span style="color:red;"><h4>{{error_msg}}</h4></span></center>
+
+            <!-- 表格面板 -->
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    借书证列表
+                </div>
+
+                <!-- Table -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>借书证</th>
+                            <th>姓名</th>
+                            <th>单位</th>
+                            <th>类别</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in queryset %}
+                        <tr>
+                            <th>{{ obj.cno }}</th>
+                            <td>{{ obj.name }}</td>
+                            <td>{{ obj.department }}</td>
+                            <td>{{ obj.get_type_display }}</td>
+                            <td>
+                                <!-- <a class="btn btn-primary btn-xs" href="/depart/{{ obj.id }}/edit/">编辑</a> -->
+                                <a class="btn btn-danger btn-xs" href="/manager/card/delete/?nid={{ obj.cno }}">删除</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endblock %}

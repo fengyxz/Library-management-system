@@ -1,0 +1,85 @@
+
+{% extends 'layout1.html' %}
+
+{% block title %}
+<title>图书查询（借/还图书）</title>
+{% endblock %}
+
+{% block content %}
+<h1><strong>
+        <center>查询借书记录</center>
+    </strong></h1>
+<div style="margin-bottom:30px"> </div>
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %} 
+        <div style="margin-bottom:20px"> </div>
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">借书证号</button>
+                    </span>
+                    <input type="text" class="form-control form-control" name="nid"  value="{{ nid }}" placeholder="{{ nid }}">
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"
+                aria-hidden="true"></span>  搜 索</button>
+        </div><!-- /.row -->
+        <div style="margin-bottom:20px"> </div>
+        <center><span style="color:red;"><h4>{{error_msg}}</h4></span></center>
+    <center><p>选择要进行的操作：</p></center>
+    <center><div class="btn-group btn-group-lg" role="group" aria-label="...">  
+        <div class="col-lg-6">
+        <a class="btn btn-primary btn" href="/book/borrow/" role="button">借阅图书</a>
+        </div>
+        <div class="col-lg-6">
+        <a class="btn btn-primary btn" href="/book/return/" role="button">归还图书</a></div>
+    </div></center>
+    <center><div>
+    </form><!-- 表格面板 -->
+    <div style="margin-bottom:20px"> </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            所借图书列表
+        </div>
+        <!-- Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>书号</th>
+                    <th>类别</th>
+                    <th>书名</th>
+                    <th>出版社</th>
+                    <th>作者</th>
+                    <th>年份</th>
+                    <th>价格</th>
+                    <th>总藏书量</th>
+                    <th>库存</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in queryset %}
+                <tr>
+                    <th>{{ obj.bno }}</th>
+                    <td>{{ obj.type }}</td>
+                    <td>{{ obj.title }}</td>
+                    <td>{{ obj.publisher }}</td>
+                    <td>{{ obj.author }}</td>
+                    <td>{{ obj.year}}</td>
+                    <td>{{ obj.price }}</td>
+                    <td>{{ obj.total }}</td>
+                    <td>{{ obj.stock }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

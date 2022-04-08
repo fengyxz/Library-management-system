@@ -1,0 +1,29 @@
+{% extends 'layout1.html' %} 
+
+{% block title %} 
+<title>图书入库</title>
+{% endblock %}
+
+{% block content %} 
+<h1><strong><center>图书入库方式</center></strong></h1>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">图书入库</h3>
+        </div>
+        <div class="panel-body">
+            <div style="margin-bottom:40px" > </div>
+            <div style="margin-bottom:40px" >
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <p><a class="btn btn-default btn-lg" href="/book/add/one/" role="button">单本入库</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <p><a class="btn btn-default btn-lg" href="/book/add/multi" role="button">批量入库</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

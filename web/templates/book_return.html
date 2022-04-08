@@ -1,0 +1,36 @@
+{% extends 'layout1.html' %}
+
+{% block title %}
+<title>归还图书</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">归还图书</h3>
+        </div>
+        <div class="panel-body">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>卡号</label>
+                    <input type="text" name="cno" class="form-control" value={{ nid }}>
+                    <!-- <span style="color: red;"></span> -->
+                </div>
+                <div class="form-group">
+                    <label>书号</label>
+                    {{ form.bno }}
+                    <!-- <span style="color: red;">{{ form.bno.errors.0 }}</span> -->
+                </div>
+                <center><button type="submit" class="btn btn-primary">归还</button></center>
+            </form>
+            <span style="color: red;">{{ form.errors }}</span>
+        </div>
+    </div>
+    <center><span style="color:red;"><h4>{{error_msg}}{{date}}</h4></span></center>
+    <center><span style="color:green;"><h4>{{suc_msg}}</h4></span></center>
+</div>
+
+{% endblock %}
