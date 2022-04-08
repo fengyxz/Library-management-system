@@ -1,6 +1,8 @@
 # 图书管理系统
 **采用Django+Mysql完成**
 
+**《数据库系统》课程lab5作业**
+
 默认已经安装：Python3.9 + Mysql
 
 1. 创建database：命名为booksystem
