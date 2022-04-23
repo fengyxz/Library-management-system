@@ -28,7 +28,7 @@ def login(request):
     if form.is_valid():
         data=request.POST
         # 验证成功，获取到的用户名和密码
-
+        print(data)
         # 去数据库校验用户名和密码是否正确，获取用户对象、None
         admin_object = models.manager.objects.filter(id=data['id'],password=data['password']).first()
         print(admin_object)
