@@ -16,12 +16,24 @@
            
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div style="margin-bottom:60px" ><center><input type="file"   class="btn btn-lg" name="newbooks">
-                <div style="margin-bottom:20px"> </div>
-                <input type="submit"  class="btn btn-primary" value="提交"></center></div>
+                <div style="margin-bottom:60px;display: flex;align-items: center;justify-content: center;" >
+                        <input type="file"   class="btn btn-lg" name="newbooks">
+                        <input type="submit"  class="btn btn-primary" value="提交">
+                </div>
             </form> 
             <center><p><h4>Note: 上传文件仅支持txt，格式如下</h4></p></center>
-            <center><p>Sample: (book_no_1, Computer Science, Computer Architecture, xxx, 2004, xxx, 90.00, 2)</p></center>
+            <center><p>Sample: book_no_1, Computer Science, Computer Architecture, Ben, 2004, Martin, 90.00, 2</p></center>
+            <center><p>(
+                'bno:varchar',
+                'type:varchar',
+                'title:varchar',
+                'publisher:varchar',
+                year:int,
+                'author:varchar',
+                'price:decimal',
+                total:int,
+                stock:int
+              )</p>
         </div>
     </div>
 </div>
