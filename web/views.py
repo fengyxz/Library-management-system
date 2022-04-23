@@ -387,7 +387,7 @@ def book_return(request):
             return render(request, 'book_return.html', {"form": form, "suc_msg": "归还成功", "name": name, "nid": nid})
         else:
             # 不存在该条记录
-            return render(request, 'book_return.html', {"form": form, "suc_msg": "归还失败，该书不存在该借书证借阅列表中", "name": name, "nid": nid})
+            return render(request, 'book_return.html', {"form": form, "error_msg": "归还失败，该书不存在该借书证借阅列表中", "name": name, "nid": nid})
     return render(request, 'book_return.html', {"form": form, "name": name, "nid": nid})
 
 
