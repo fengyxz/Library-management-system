@@ -10,7 +10,7 @@ class manager(models.Model):
     id=models.CharField(verbose_name="ID",max_length=32,primary_key=True)
     password=models.CharField(verbose_name="密码",max_length=32)
     name=models.CharField(verbose_name="姓名",max_length=32)
-    contact=models.IntegerField(verbose_name="联系方式")
+    contact=models.CharField(verbose_name="联系方式",max_length=20)
 
 # 设置图书信息，存储图书信息
 class book(models.Model):

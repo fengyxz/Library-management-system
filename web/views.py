@@ -6,6 +6,8 @@ from django.shortcuts import redirect, render
 from web import models
 import re
 
+ 
+
 # Create your views here.
 # 开始界面
 
@@ -189,14 +191,19 @@ def book_add_multi(request):
     file = file_object.read()
     # 将其转化为字符串形式
     str = file.decode('utf-8')
-
-    # 通过正则表达式，得到（ ）内的字符串，生成列表list
-    list = re.findall(r'[(](.*?)[)]', str)
-
+    #print(str)
+    list=str.split(')\n')
+    print(list[-1])
+    list[-1]=list[-1].strip(')')
+    print(list[-1])
     querysetlist = []
-    # 对list中的每一个字符串进行字符串切割，切割','
+    #对list中的每一个字符串进行字符串切割，切割', '
     for obj in list:
+        obj=obj[1:]
+        #print(obj)
         data = obj.split(', ')
+        if(len(data)!=8):
+            continue
         print(data)
         book = models.book.objects.filter(bno=data[0])
         if book:
@@ -207,9 +214,9 @@ def book_add_multi(request):
             row_object.save()
         else:
             # 如果不存在，则需要创建
-            querysetlist.append(models.book(bno=data[0], type=data[1], title=data[2], publisher=data[3], year=int(
-                data[4]), author=data[5], price=float(data[6]), total=int(data[7]), stock=int(data[7])))
-    # 批量创建不存在的图书目录
+            querysetlist.append(models.book(bno=data[0], type=data[1], title=data[2], publisher=data[3], year=int(data[4]), author=data[5], price=float(data[6]), total=int(data[7]), stock=int(data[7])))
+
+    #批量创建不存在的图书目录
     models.book.objects.bulk_create(querysetlist)
     return redirect('/book/add/suc/', {"name": name})
 
